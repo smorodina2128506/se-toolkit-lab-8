@@ -7,8 +7,8 @@
     - [1.1.3. Enable issues](#113-enable-issues)
     - [1.1.4. Add a classmate as a collaborator](#114-add-a-classmate-as-a-collaborator)
     - [1.1.5. Protect your `main` branch](#115-protect-your-main-branch)
-  - [1.2. Clone your fork and set up the environment](#12-clone-your-fork-and-set-up-the-environment)
-  - [1.3. Stop Lab 7 services on your VM](#13-stop-lab-7-services-on-your-vm)
+  - [1.2. SSH into your VM and set up the environment there](#12-ssh-into-your-vm-and-set-up-the-environment-there)
+  - [1.3. Stop Lab 7 services on your VM to free the ports](#13-stop-lab-7-services-on-your-vm-to-free-the-ports)
   - [1.4. Start the services on your VM](#14-start-the-services-on-your-vm)
   - [1.5. Populate the database](#15-populate-the-database)
   - [1.6. Verify the deployment on your VM](#16-verify-the-deployment-on-your-vm)
@@ -20,7 +20,7 @@
 ## 1. Required steps
 
 > [!IMPORTANT]
-> Do the whole lab on your **VM**. Open the repo over `VS Code` Remote-SSH and run every command there. When this guide says `localhost`, it means the VM itself or a forwarded port from that VM. Do not install or run `nanobot` on your main machine.
+> Do the whole lab on your **VM**. You can work through a plain SSH shell or through `VS Code` Remote-SSH. When this guide says `localhost`, it means the VM itself or a forwarded port from that VM. Do not install or run `nanobot` on your main machine.
 
 ### 1.1. Set up your fork
 
@@ -271,6 +271,11 @@ The database starts empty. You need to run the ETL pipeline to populate it with 
    ```
 
    You should see a JSON response with model information.
+
+   > [!TIP]
+   > If you get `Internal Server Error`, your Qwen token may have expired.
+   > Check: `curl -s -H "X-API-Key: YOUR_KEY" http://localhost:42005/health` — if `default_account.status` is `"expired"`, you need to refresh.
+   > See [Qwen Code credentials file](../../wiki/qwen-code.md#qwen-code-credentials-file) for how to re-copy the credentials from your local machine to the VM.
 
 > [!IMPORTANT]
 > If the dashboard shows no data or errors, make sure:
