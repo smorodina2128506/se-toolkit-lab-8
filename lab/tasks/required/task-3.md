@@ -108,7 +108,7 @@ The agent still can't access logs or traces — only you can, through the UIs. L
 
 ### What to do in Part C
 
-1. Implement new MCP tools that query VictoriaLogs and VictoriaTraces. Add them to the existing MCP server in `mcp/mcp_lms/` or write a new MCP server. You need at least:
+1. Implement new MCP tools that query VictoriaLogs and VictoriaTraces. Add them to the existing MCP server in `mcp/lms_mcp/` or write a new MCP server. You need at least:
 
    **Log tools (VictoriaLogs HTTP API — port 9428):**
    - `logs_search` — search logs by keyword and/or time range
