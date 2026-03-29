@@ -25,7 +25,7 @@ async def get_items(session: AsyncSession = Depends(get_session)):
             extra={"event": "items_list_failed", "error": str(exc)},
         )
         raise HTTPException(
-            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Service unavailable: {exc}",
         ) from exc
 
