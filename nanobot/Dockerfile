@@ -7,8 +7,6 @@ WORKDIR /app
 COPY --from=workspace pyproject.toml uv.lock ./
 COPY --from=workspace nanobot/ ./nanobot/
 COPY --from=workspace mcp/mcp-lms/ ./mcp/mcp-lms/
-COPY --from=workspace nanobot-websocket-channel/ ./nanobot-websocket-channel/
-COPY --from=workspace mcp/mcp-obs/ ./mcp/mcp-obs/
 RUN --mount=type=cache,target=/root/.cache/uv uv sync
 ARG REGISTRY_PREFIX_DOCKER_HUB
 FROM ${REGISTRY_PREFIX_DOCKER_HUB}python:3.14.2-slim-bookworm
